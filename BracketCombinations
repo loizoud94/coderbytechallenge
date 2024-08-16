@@ -1,0 +1,14 @@
+def BracketCombinations(num):
+  numerator = 1
+  for i in range(2, 2*num + 1):
+    numerator *= i
+  
+  denominator1 = 1
+  for i in range(2, num+2):
+    denominator1 *= i
+
+  denominator2 = 1
+  for i in range(2, num+1):
+    denominator2 *= i
+
+  return numerator/(denominator1 * denominator2)
