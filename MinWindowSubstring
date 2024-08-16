@@ -1,0 +1,18 @@
+def MinWindowSubstring(strArr):
+    char_list = []
+    input_word = strArr[0]
+    for char in strArr[1]:
+        ind = input_word.index(char)
+        input_word = input_word.replace(char,'-',1)
+        char_list.append(ind)
+
+    strArr[0] = strArr[0][min(char_list):max(char_list)+1]
+
+    reverse_str = strArr[0][::-1]
+    char_list2 = []
+    for char in strArr[1]:
+        ind = reverse_str.index(char)
+        reverse_str = reverse_str.replace(char,'-',1)
+        char_list2.append(len(reverse_str) - 1 - ind)
+
+    return strArr[0][min(char_list2):max(char_list2)+1]
