@@ -1,0 +1,41 @@
+def TreeConstructor(strArr):
+
+  tuple_list = [tuple(map(int, item.strip("()").split(","))) for item in strArr]
+  
+  second_integers = [item[1] for item in tuple_list]
+
+  counts = {}
+
+  more_than_twice_found = False
+
+  for num in second_integers:
+    if num in counts:
+      counts[num] += 1
+      if counts[num] > 2:
+        more_than_twice_found = True
+        break
+    else:
+      counts[num] = 1
+
+  if more_than_twice_found:
+    return "false"
+  else:
+    first_integers = [item[0] for item in tuple_list]
+
+    seen = set()
+
+    duplicate_found = False
+
+    for num in first_integers:
+      if num in seen:
+        duplicate_found = True
+        break
+      seen.add(num)
+    
+    if duplicate_found:
+      return "false"
+    else:
+      return "true"
+
+# keep this function call here 
+print(TreeConstructor(raw_input()))
